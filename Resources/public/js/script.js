@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  var keyController = new gtv.jq.KeyController();
+  //var keyController = new gtv.jq.KeyController();
 
   /*
   // -- try row
@@ -86,6 +86,7 @@ $(document).ready(function() {
 
   sideNavControl.showControl(showParams);
   */
+  /*
   var navSelectors = {item: '.item',
                       itemParent: '.item-parent',
                       itemRow: '.item-row'};
@@ -127,6 +128,7 @@ $(document).ready(function() {
   });
   keyController.addBehaviorZone(zone_couchmode_slider);
   keyController.start(zone_couchmode_slider, true);
+  */
 
   //window.location= 'http://gri.gs/tv/gtv2/';
 
@@ -181,5 +183,13 @@ $(document).ready(function() {
   var focusComponent = tv.ui.getComponentByElement(focusElement);
   focusComponent.tryFocus();
   */
+
+  /*
+  var elementToFocus = goog.dom.getElement('hello');
+  var componentToFocus = tv.ui.getComponentByElement(elementToFocus);
+  tv.ui.Document.getInstance().setFocusedComponent(componentToFocus);
+  */
+
+
 
 });
