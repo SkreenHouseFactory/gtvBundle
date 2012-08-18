@@ -1,4 +1,87 @@
+
+//document.location= 'http://benoit.myskreen.typhon.net/ne/ajax.html';
+
+//Player.setType('android');
+// -- Webview
+var Webview;
+Webview = {
+  onMessage: function(args) {
+    $('.overlay').show();
+    //console.warn(['Webview.onMessage', args[0], args[1]]);
+    switch (args[0]) {
+      case 'init':
+        Player.setType('android');
+      break;
+      case 'videoInfo':
+      case 'videoError':
+        console.error(['Android error', args[1], args[2]]);
+      case 'videoStart':
+      case 'videoEnd':
+        Couchmode.next();
+      break;   
+    }
+  },
+  postMessage: function(args) {
+    if (typeof App != 'undefined') {
+
+      console.warn(['Webview.postMessage', args[0], args[1], args[2]]);
+      switch (args[0]) {
+        case 'player':
+        
+          switch (args[1]) {
+            case 'launch':
+              //launch video
+              App.playerSetUrl(args[2]);
+            break;
+            case 'start':
+              //start
+              App.playerStart();
+            break;
+            case 'pause':
+              //pause
+              App.playerPause();
+            break;
+            case 'play':
+              //play
+              App.playerPlay();
+            break;
+            case 'stop':
+              //pause
+              App.playerStop();
+            break;
+          }
+  
+        break;
+        case 'browser':
+          App.webOpenUrl(args[1]);
+        break;
+        case 'fullscreen':
+          App.setWebFullScreen();
+        break;
+      }
+    } else {
+      console.warn(['Webview.postMessage UNDEFINED !!', args[0], args[1], args[2]]);
+    }
+  }
+}
+console.warn('load Webview');
+
+
+//Webview.onMessage(['test', 'ok']);
+
 $(document).ready(function() {
+  
+  // zoom
+  var w = screen.width;
+  var h = screen.height;
+  var bw = $(window).width();
+  var bh = $(window).height();
+  var wRatio = bw/w;
+  var hRatio = bh/h;
+  var ratio = (wRatio + hRatio) / 1.2;
+  //$('body').css('zoom', ratio);
+  
+  //Player.setType('android');
 
   //var keyController = new gtv.jq.KeyController();
 
@@ -169,7 +252,6 @@ $(document).ready(function() {
   //keyController.removeAllZones();
 
   console.log('gtv', 'loaded');
-
   /*
   // Execute the decorator
   try {

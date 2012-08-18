@@ -1,14 +1,34 @@
 {#'@SkreenHouseFactoryGtvBundle/Resources/public/vendors/gtv-jquery/css/controls.css'#}
-{% stylesheets
+{#% stylesheets
     '@SkreenHouseFactoryGtvBundle/Resources/public/less/gtv.less'
       filter='less,?yui_css'
       output='css/gtv.css'
       %}
     <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
-    <meta name="gtv-autozoom" content="off" />
-
-
-    <!-- Closure Library and GTV Closure UI Library files -->
-    <script src="{{ asset('bundles/skreenhousefactorygtv/vendors/gtv-ui-lib/closure-library/closure/goog/base.js') }}"></script>
-    <script src="{{ asset('bundles/skreenhousefactorygtv/vendors/tv-deps.js') }}"></script>
-{% endstylesheets %}
+{% endstylesheets %#}
+<meta name="gtv-autozoom" content="off" />
+{#<meta name="viewport" content="width=device-width">#}
+{# Closure Library and GTV Closure UI Library files 
+<script src="{{ asset('bundles/skreenhousefactorygtv/vendors/gtv-ui-lib/closure-library/closure/goog/base.js') }}"></script>
+<script src="{{ asset('bundles/skreenhousefactorygtv/vendors/tv-deps.js') }}"></script>
+<script> 
+  //goog.require('goog.History');
+  goog.require('tv.ui');
+  goog.require('tv.ui.Button');
+  goog.require('tv.ui.DecorateHandler');
+  goog.require('tv.ui.Grid');
+  goog.require('tv.ui.Input');
+  goog.require('tv.ui.Lightbox');
+  goog.require('tv.ui.Link');
+  goog.require('tv.ui.Menu');
+  goog.require('tv.ui.SubMenu');
+  goog.require('tv.ui.TabContainer');
+  goog.require('tv.ui.ToggleButton');
+</script>
+<style type='text/css'>
+  .tv-component.tv-component-focused {
+    color: #fff;
+    background-color: #000;
+  }
+</style>
+#}
