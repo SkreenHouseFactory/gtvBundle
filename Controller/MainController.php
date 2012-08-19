@@ -24,7 +24,7 @@ class MainController extends Controller
     */
     public function gtvAction(Request $request)
     {
-
+      //echo '<div style=color:white;>';print_r($_SERVER);echo '</div>';exit();
       $response = $this->render('SkreenHouseFactoryTvBundle:Main:splash.html.twig', array(
         'device' => array('head'   => 'SkreenHouseFactoryGtvBundle:Gtv:_head.html.twig',
                           'script' => 'SkreenHouseFactoryGtvBundle:Gtv:_script.html.twig')

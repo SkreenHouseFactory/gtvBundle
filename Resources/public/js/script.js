@@ -1,13 +1,8 @@
-
-//document.location= 'http://benoit.myskreen.typhon.net/ne/ajax.html';
-
-//Player.setType('android');
 // -- Webview
 var Webview;
 Webview = {
   onMessage: function(args) {
-    $('.overlay').show();
-    //console.warn(['Webview.onMessage', args[0], args[1]]);
+    console.warn(['Webview.onMessage', args[0], args[1]]);
     switch (args[0]) {
       case 'init':
         Player.setType('android');
@@ -18,6 +13,51 @@ Webview = {
       case 'videoStart':
       case 'videoEnd':
         Couchmode.next();
+      break;
+      case 'keyCode':
+        if (UI.currentView == 'couchmode') {
+          Couchmode.idle();
+        }
+        switch (parseInt(args[1])) {
+          case 22: //right
+           //console.warn('UI.goRight');
+			     UI.goRight();
+          break;
+          case 21: //left
+           //console.warn('UI.goLeft');
+			     UI.goLeft();
+          break;
+          case 20: //down
+           //console.warn('UI.goDown');
+			     UI.goDown();
+          break;
+          case 19: //up
+           //console.warn('UI.goUp');
+			     UI.goUp();
+          break;
+          case 13: //enter
+          case 23: //enter
+          case 66: //enter kb
+           console.warn('UI.goEnter');
+			     UI.goEnter();
+          break;
+          case 4: //return
+           //console.warn('UI.goReturn');
+			     UI.goReturn();
+          break;
+          case 126: //play
+           //console.warn('play');
+			     Webview.postMessage(['player', 'play']);
+          break;
+          case 127: //pause
+           //console.warn('pause');
+			     Webview.postMessage(['player', 'pause']);
+          break;
+          default:
+           //console.warn(['keyCode', args[1]]);
+          break;
+        }
+        return false;
       break;   
     }
   },
@@ -64,214 +104,13 @@ Webview = {
     }
   }
 }
-console.warn('load Webview');
-
-
-//Webview.onMessage(['test', 'ok']);
 
 $(document).ready(function() {
-  
-  // zoom
-  var w = screen.width;
-  var h = screen.height;
-  var bw = $(window).width();
-  var bh = $(window).height();
-  var wRatio = bw/w;
-  var hRatio = bh/h;
-  var ratio = (wRatio + hRatio) / 1.2;
-  //$('body').css('zoom', ratio);
-  
-  //Player.setType('android');
 
-  //var keyController = new gtv.jq.KeyController();
-
-  /*
-  // -- try row
-  var styles = {
-    row: 'skhf-scrolling-page',
-    itemsDiv: 'skhf-scroll-items-div-style',
-    itemDiv: 'skhf-scroll-div-style',
-    item: 'skhf-scroll-item-style',
-    hover: 'item-hover'
-  };
-
-  var createParams = {
-    containerId: 'row-icons',
-    styles: styles,
-    keyController: keyController
-  };
-  rowControl = new gtv.jq.RowControl(createParams);
-
-  var controlParams = {
-    topParent: $('#icons'),
-    contents: {
-      items: $('#icons .icon')
-    }
-  };
-  rowControl.showControl(controlParams);
-  rowControl.enableNavigation();
-  // -- end try
-  */
-
-  // -- try slide
-  /*var createParams = {
-    containerId: 'row-icons',
-    styles: styleClasses,
-    keyController: keyController
-  };
-  slidingControl = new gtv.jq.SlidingControl(createParams);
-
-  var showParams = {
-    topParent: $('#icons'),
-    contents: {
-      captionItems: $('#icons .icon')
-    }
-  };
-  slidingControl.showControl(showParams);*/
-  // -- end try
-
-  /*var styles = {
-    item: 'skhf-menu-option',
-    itemDiv: 'skhf-menu-option-div',
-    row: 'skhf-menu-row',
-    chosen: 'skhf-menu-option-active',
-    normal: 'skhf-menu-option-off',
-    selected: 'menu-option-highlighted'
-  };
-
-  var navItems = $('#icons .icon');
-  var behaviors = {
-    orientation: 'horizontal',
-    selectOnInit: true
-  };
-
-  var sidenavParms = {
-    createParams: {
-      containerId: 'mainMenu',
-      styles: styles,
-      keyController: keyController,
-      choiceCallback: function(selectedItem) {
-        //choiceCallback(selectedItem);
-      },
-      //layerNames: [gtv.jq.VideoControl.fullScreenLayer]
-    },
-    behaviors: behaviors
-  };
-
-  var sideNavControl = new gtv.jq.SideNavControl(sidenavParms);
-
-  var showParams = {
-    topParent: $('#icons'),
-    contents: {
-      items: navItems
-    }
-  };
-
-  sideNavControl.showControl(showParams);
-  */
-  /*
-  var navSelectors = {item: '.item',
-                      itemParent: '.item-parent',
-                      itemRow: '.item-row'};
-  var selectionClasses = {basic: 'item-selected'};
-
-  var zone_splash = new gtv.jq.KeyBehaviorZone({
-    containerSelector: '#splash',
-    navSelectors: navSelectors,
-    selectionClasses: selectionClasses,
-    keyMapping: {
-      13: function(elmt){
-        console.log('script', 'zone_splash callback', elmt);
-        var args = {};
-        if (elmt.data('slider-scroll')) {
-          args.scroll = elmt.data('slider-scroll');
-        }
-        UI.load(elmt.data('load-route'), elmt.data('load-view'), args);
-        //elmt.click();
-        return false;
-      }
-    }
-  });
-  keyController.addBehaviorZone(zone_splash);
-  keyController.start(zone_splash, true);
-
-
-  var zone_couchmode_slider = new gtv.jq.KeyBehaviorZone({
-    containerSelector: '.slider',
-    navSelectors: navSelectors,
-    selectionClasses: selectionClasses,
-    keyMapping: {
-      13: function(elmt){
-        console.log('script', 'zone_couchmode_slider callback', elmt.parent());
-        Couchmode.play(elmt.parent(), $('#couchmode-player'));
-        //elmt.click();
-        return false;
-      }
-    }
-  });
-  keyController.addBehaviorZone(zone_couchmode_slider);
-  keyController.start(zone_couchmode_slider, true);
-  */
-
-  //window.location= 'http://gri.gs/tv/gtv2/';
-
-  /*
-  var zone_couchmode_topbar = new gtv.jq.KeyBehaviorZone({
-    containerSelector: '#couchmode-topbar',
-    navSelectors: navSelectors,
-    selectionClasses: selectionClasses,
-    keyMapping: {
-      13: function(elmt){
-        console.log('script', 'zone_couchmode_topbar callback', elmt);
-        //elmt.click();
-        return false;
-      }
-    }
-  });
-  keyController.addBehaviorZone(zone_couchmode_topbar);
-  keyController.start(zone_couchmode_topbar, true);
-  */
-
-  /*var zone_couchmode_topbar_ul = new gtv.jq.KeyBehaviorZone({
-    containerSelector: '#couchmode-topbar ul',
-    navSelectors: navSelectors,
-    selectionClasses: selectionClasses,
-    keyMapping: {
-      13: function(elmt){
-        console.log('script', 'zone_couchmode_topbar_ul callback', elmt);
-        //elmt.click();
-        return false;
-      }
-    }
-  });
-  keyController.addBehaviorZone(zone_couchmode_topbar_ul);
-  keyController.start(zone_couchmode_topbar_ul, true);
-  */
-
-  //keyController.stop();
-  //keyController.removeAllZones();
-
-  console.log('gtv', 'loaded');
-  /*
-  // Execute the decorator
-  try {
-    tv.ui.decorate($('#main'));
-  } catch (e) {
-    alert(e.message);
+  // -- player android
+  if (navigator.userAgent.match(/android/gi)) {
+    Player.setType('android');
   }
-  
-  // Set focus on initial element
-  var focusElement = $('.first-focus');
-  var focusComponent = tv.ui.getComponentByElement(focusElement);
-  focusComponent.tryFocus();
-  */
 
-  /*
-  var elementToFocus = goog.dom.getElement('hello');
-  var componentToFocus = tv.ui.getComponentByElement(elementToFocus);
-  tv.ui.Document.getInstance().setFocusedComponent(componentToFocus);
-  */
-
-
-
+  console.log('gtv loaded');
 });

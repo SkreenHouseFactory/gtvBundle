@@ -1,38 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- Custom paths to Closure Library and GTV Closure UI Library files -->
-    
-    <script src="{{ asset('bundles/skreenhousefactorygtv/vendors/gtv-ui-lib/closure-library/closure/goog/base.js') }}"></script>
-    <script src="{{ asset('bundles/skreenhousefactorygtv/vendors/tv-deps.js') }}"></script>
-
-    <!-- End custom script includes -->
-    <script type='text/javascript'>
-      goog.require('tv.ui');
-      goog.require('tv.ui.Component');
-      goog.require('tv.ui.Container');
-      goog.require('tv.ui.Document');
-    </script>
-    <style type='text/css'>
-      .tv-component.tv-component-focused {
-        color: #fff;
-        background-color: #000;
-      }
-    </style>
+  <script src="{{ asset('bundles/skreenhousefactoryv3/initializr/js/libs/jquery-1.7.2.min.js') }}"></script>
   </head>
   <body>
-    <div class='tv-container-horizontal'>
-      <span class='tv-component' id='hello'>Hello</span>
-      <span class='tv-component' id='world'>World</span>
-    </div>
-    <input type="text" onFocus="console.warn('focus1')" />
-    <input type="text" onFocus="console.warn('focus1')"/>
-
+    please
     <script type='text/javascript'>
-      tv.ui.decorate(document.body);
-      var elementToFocus = goog.dom.getElement('hello');
-      var componentToFocus = tv.ui.getComponentByElement(elementToFocus);
-      tv.ui.Document.getInstance().setFocusedComponent(componentToFocus);
+      //keynav
+      $(document).keydown(function(e) {
+        var key = e.keyCode;
+        console.warn(['keydown', 'key', key]);
+      });
     </script>
   </body>
 </html>
