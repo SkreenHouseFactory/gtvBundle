@@ -2,7 +2,7 @@
 var Webview;
 Webview = {
   onMessage: function(args) {
-    console.warn(['Webview.onMessage', args[0], args[1]]);
+    //console.warn(['Webview.onMessage', args[0], args[1]]);
     switch (args[0]) {
       case 'init':
         Player.setType('android');
@@ -35,10 +35,10 @@ Webview = {
            //console.warn('UI.goUp');
 			     UI.goUp();
           break;
-          case 13: //enter
-          case 23: //enter
+          //case 13: //enter : attention already binded by jquery
+          //case 23: //enter
           case 66: //enter kb
-           console.warn('UI.goEnter');
+           console.warn(['Webview.keyCode', 'enter']);
 			     UI.goEnter();
           break;
           case 4: //return
@@ -54,7 +54,7 @@ Webview = {
 			     Webview.postMessage(['player', 'pause']);
           break;
           default:
-           //console.warn(['keyCode', args[1]]);
+           console.warn(['Webview.keyCode', args[1]]);
           break;
         }
         return false;
@@ -64,7 +64,7 @@ Webview = {
   postMessage: function(args) {
     if (typeof App != 'undefined') {
 
-      console.warn(['Webview.postMessage', args[0], args[1], args[2]]);
+      //console.warn(['Webview.postMessage', args[0], args[1], args[2]]);
       switch (args[0]) {
         case 'player':
         
