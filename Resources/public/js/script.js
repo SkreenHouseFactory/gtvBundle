@@ -36,7 +36,12 @@ Webview = {
 			     UI.goUp();
           break;
           //case 13: //enter : attention already binded by jquery
-          //case 23: //enter
+          case 23: //enter
+            if (UI.getFocusedElmt().hasClass('tv-input') || UI.getFocusedElmt().hasClass('btn')) {
+              console.warn(['Webview.keyCode', 'tv-input', 'enter=23']);
+              UI.getFocusedElmt().click();
+            }
+          break;
           case 66: //enter kb
            console.warn(['Webview.keyCode', 'enter']);
 			     UI.goEnter();
