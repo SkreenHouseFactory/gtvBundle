@@ -1,7 +1,7 @@
 // -- Webview
 var Webview;
 Webview = {
-  onMessage: function(args) {
+  onMessage: function(args) {
     //console.warn(['Webview.onMessage', args[0], args[1]]);
     switch (args[0]) {
       case 'init':
@@ -35,13 +35,8 @@ Webview = {
            //console.warn('UI.goUp');
 			     UI.goUp();
           break;
-          //case 13: //enter : attention already binded by jquery
+          case 13: //enter : attention already binded by jquery
           case 23: //enter
-            if (UI.getFocusedElmt().hasClass('tv-input') || UI.getFocusedElmt().hasClass('btn')) {
-              console.warn(['Webview.keyCode', 'tv-input', 'enter=23']);
-              UI.getFocusedElmt().click();
-            }
-          break;
           case 66: //enter kb
            console.warn(['Webview.keyCode', 'enter']);
 			     UI.goEnter();
