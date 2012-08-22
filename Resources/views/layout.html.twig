@@ -2,15 +2,19 @@
 <html>
   <head>
   <script src="{{ asset('bundles/skreenhousefactoryv3/initializr/js/libs/jquery-1.7.2.min.js') }}"></script>
+  <script src="{{ asset('bundles/skreenhousefactorygtv/js/vendors/jquery.keynav.js') }}"></script>
   </head>
   <body>
-    please
-    <script type='text/javascript'>
-      //keynav
-      $(document).keydown(function(e) {
-        var key = e.keyCode;
-        console.warn(['keydown', 'key', key]);
-      });
-    </script>
+  key:  <input id="k-console"/>
+  <script>
+    $.fn.keynav('onClass','offClass');
+    
+    //
+    Webview = {
+      onMessage: function() {
+      
+      }
+    };
+  </script>
   </body>
 </html>

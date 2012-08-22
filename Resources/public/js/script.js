@@ -112,5 +112,8 @@ $(document).ready(function() {
     Player.setType('android');
   }
 
+  //needed
+  Webview.postMessage(['fullscreen']);
+
   console.log('gtv loaded');
 });
