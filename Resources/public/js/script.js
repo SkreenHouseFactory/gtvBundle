@@ -45,6 +45,16 @@ Webview = {
            //console.warn('UI.goReturn');
 			     UI.goReturn();
           break;
+          case 89: //prev
+            Couchmode.prev();
+          break;
+          case 90: //next
+            Couchmode.next();
+          break;
+          case 126: //play
+           //console.warn('play');
+			     Webview.postMessage(['player', 'play']);
+          break;
           case 126: //play
            //console.warn('play');
 			     Webview.postMessage(['player', 'play']);
@@ -114,6 +124,9 @@ $(document).ready(function() {
 
   //needed
   Webview.postMessage(['fullscreen']);
+
+  //no slider animation
+  //BaseSlider.animate_effect = null;
 
   console.log('gtv loaded');
 });
