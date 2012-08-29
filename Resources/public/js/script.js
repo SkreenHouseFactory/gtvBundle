@@ -15,60 +15,63 @@ Webview = {
         Couchmode.next();
       break;
       case 'keyCode':
-        if (UI.currentView == 'couchmode') {
-          Couchmode.idle();
-        }
-        switch (parseInt(args[1])) {
+        
+        Couchmode.idle();
+
+        var key = parseInt(args[1]);
+        switch (key) {
           case 22: //right
-           //console.warn('UI.goRight');
-			     UI.goRight();
+            //console.warn(['Webview.keyCode', 'UI.goRight']);
+			      UI.goRight();
           break;
           case 21: //left
-           //console.warn('UI.goLeft');
-			     UI.goLeft();
+            //console.warn(['Webview.keyCode', 'UI.goLeft']);
+			      UI.goLeft();
           break;
           case 20: //down
-           //console.warn('UI.goDown');
-			     UI.goDown();
+            console.warn(['Webview.keyCode', 'UI.goDown']);
+            //UI.goUp();
+			      UI.goDown();
           break;
           case 19: //up
-           //console.warn('UI.goUp');
-			     UI.goUp();
+            console.warn(['Webview.keyCode', 'UI.goUp']);
+			      UI.goUp();
           break;
           case 13: //enter : attention already binded by jquery
           case 23: //enter
-          case 66: //enter kb
-           console.warn(['Webview.keyCode', 'enter']);
-			     UI.goEnter();
+          //case 66: //enter kb
+			      UI.goEnter(key);
+            console.warn(['Webview.keyCode', 'UI.goEnter', key]);
           break;
           case 4: //return
-           //console.warn('UI.goReturn');
-			     UI.goReturn();
+            //console.warn(['Webview.keyCode', 'UI.goReturn']);
+			      UI.goReturn();
           break;
           case 89: //prev
+            //console.warn(['Webview.keyCode', 'prev']);
             Couchmode.prev();
           break;
           case 90: //next
+            //console.warn(['Webview.keyCode', 'next']);
             Couchmode.next();
           break;
           case 126: //play
-           //console.warn('play');
-			     Webview.postMessage(['player', 'play']);
-          break;
-          case 126: //play
-           //console.warn('play');
-			     Webview.postMessage(['player', 'play']);
+            //console.warn('play');
+			      Webview.postMessage(['player', 'play']);
           break;
           case 127: //pause
-           //console.warn('pause');
-			     Webview.postMessage(['player', 'pause']);
+            //console.warn('pause');
+			      Webview.postMessage(['player', 'pause']);
           break;
           default:
-           console.warn(['Webview.keyCode', args[1]]);
+            //console.warn(['Webview.keyCode', args[1]]);
           break;
         }
         return false;
-      break;   
+      break;
+      case 'log':
+        console.warn(['Webview.log', args[1]]);
+      break;
     }
   },
   postMessage: function(args) {
@@ -100,7 +103,7 @@ Webview = {
               App.playerStop();
             break;
           }
-  
+
         break;
         case 'browser':
           App.webOpenUrl(args[1]);
@@ -123,10 +126,7 @@ $(document).ready(function() {
   }
 
   //needed
-  Webview.postMessage(['fullscreen']);
-
-  //no slider animation
-  //BaseSlider.animate_effect = null;
+  //Webview.postMessage(['fullscreen']);
 
   console.log('gtv loaded');
 });

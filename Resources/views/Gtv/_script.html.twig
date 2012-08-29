@@ -1,19 +1,26 @@
-{% javascripts
-    '@SkreenHouseFactoryGtvBundle/Resources/public/js/gtv.js'
+{#
+% javascripts
     '@SkreenHouseFactoryGtvBundle/Resources/public/js/script.js'
+    '@SkreenHouseFactoryGtvBundle/Resources/public/js/gtv.js'
     filter='?yui_js' 
     output='js/compiled/gtv.js'  %}
     <script src="{{ asset_url }}"></script>
-{% endjavascripts %}
-{#
-'@SkreenHouseFactoryGtvBundle/Resources/public/vendors/gtv-jquery/js/*' 
-'@SkreenHouseFactoryGtvBundle/Resources/public/vendors/gtv-closure/*.js' 
-
-<script>
-  //document.location = 'http://tvuidemos.appspot.com';
-  console.log('tv', tv);
-  UI.decorate(document.body);
-  UI.focus($('.first-focus'));
-
-</script>
+{% endjavascripts %
 #}
+{% javascripts
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/jquery-1.8.0.min.js'
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/inheritance.js'
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/core/*'
+    '@SkreenHouseFactoryGtvBundle/Resources/public/js/script.js'
+    '@SkreenHouseFactoryGtvBundle/Resources/public/js/gtv.js'
+
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/jquery.cookies.min.js'
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/bootstrap.js'
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/easyXDM.min.js'
+    '@SkreenHouseFactoryTvBundle/Resources/public/js/vendors/jquery.keynav.js'
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/*'
+    '@SkreenHouseFactoryTvBundle/Resources/public/js/*' 
+    filter='?yui_js' 
+    output='js/compiled/tv.js'  %}
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
