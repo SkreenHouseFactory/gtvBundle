@@ -9,7 +9,7 @@ Webview = {
       break;
       case 'videoInfo':
       case 'videoError':
-        console.error(['Android error', args[1], args[2]]);
+        console.warn(['Android videoError', args[1], args[2]]);
       case 'videoStart':
       case 'videoEnd':
         Couchmode.next();
