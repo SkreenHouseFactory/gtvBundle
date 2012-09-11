@@ -1,26 +1,17 @@
-{#
-% javascripts
-    '@SkreenHouseFactoryGtvBundle/Resources/public/js/script.js'
-    '@SkreenHouseFactoryGtvBundle/Resources/public/js/gtv.js'
-    filter='?yui_js' 
-    output='js/compiled/gtv.js'  %}
-    <script src="{{ asset_url }}"></script>
-{% endjavascripts %
-#}
 {% javascripts
+    '@SkreenHouseFactoryTvBundle/Resources/public/js/bridges/android.js'
     '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/jquery-1.8.0.min.js'
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/jquery.cookies.min.js'
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/bootstrap.js'
     '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/inheritance.js'
-    '@SkreenHouseFactoryV3Bundle/Resources/public/js/core/*'
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/core/*.js'
+    '@SkreenHouseFactoryTvBundle/Resources/public/js/*.js' 
     '@SkreenHouseFactoryGtvBundle/Resources/public/js/script.js'
     '@SkreenHouseFactoryGtvBundle/Resources/public/js/gtv.js'
 
-    '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/jquery.cookies.min.js'
-    '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/bootstrap.js'
-    '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/easyXDM.min.js'
     '@SkreenHouseFactoryTvBundle/Resources/public/js/vendors/jquery.keynav.js'
-    '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/*'
-    '@SkreenHouseFactoryTvBundle/Resources/public/js/*' 
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/*.js'
     filter='?yui_js' 
-    output='js/compiled/tv.js'  %}
+    output='js/compiled/gtv.js'  %}
     <script src="{{ asset_url }}"></script>
 {% endjavascripts %}
