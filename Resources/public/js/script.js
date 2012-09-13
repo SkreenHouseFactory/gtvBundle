@@ -6,9 +6,9 @@ $(document).ready(function() {
   }
 
   //needed
-  if (typeof Webview != 'undefined') {
-    Webview.postMessage(['fullscreen']);
-  }
+  //if (typeof Webview != 'undefined') {
+  //  Webview.postMessage(['fullscreen']);
+  //}
 
-  console.warn('gtv loaded');
+  //console.warn('gtv loaded');
 });
