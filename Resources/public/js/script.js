@@ -5,6 +5,7 @@ $(document).ready(function() {
     Player.setType('android');
   }
 
+  Webview.launchAndKill('http://v3.benoit.myskreen.typhon.net/app_dev.php/gtv');
   //needed
   //if (typeof Webview != 'undefined') {
   //  Webview.postMessage(['fullscreen']);
