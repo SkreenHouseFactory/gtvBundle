@@ -1,4 +1,4 @@
 #gtv
 gtv:
-    pattern:  /gtv
+    pattern:  /
     defaults: { _controller: SkreenHouseFactoryGtvBundle:Main:gtv }
